@@ -1,0 +1,36 @@
+{
+  "name": "pattern-storybook",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "type": "module",
+  "devDependencies": {
+    "@chromatic-com/storybook": "^3.2.4",
+    "@storybook/addon-essentials": "^8.5.3",
+    "@storybook/addon-interactions": "^8.5.3",
+    "@storybook/addon-mdx-gfm": "^8.5.3",
+    "@storybook/addon-onboarding": "^8.5.3",
+    "@storybook/blocks": "^8.5.3",
+    "@storybook/manager-api": "^8.5.3",
+    "@storybook/test": "^8.5.3",
+    "@storybook/theming": "^8.5.3",
+    "@storybook/vue3": "^8.5.3",
+    "@storybook/vue3-vite": "^8.5.3",
+    "@vitejs/plugin-vue": "^5.2.1",
+    "storybook": "^8.5.3",
+    "vite": "^6.1.0"
+  },
+  "dependencies": {
+    "d3": "^7.9.0",
+    "lattice-viz": "^0.2.0",
+    "vue": "^3.5.13"
+  }
+}
