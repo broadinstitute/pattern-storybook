@@ -1,17 +1,30 @@
 // import { fn } from '@storybook/test';
 
-import Barplot from "./Barplot.vue";
+import BarPlot from "./BarPlot.vue";
 import * as RandomDataLib from "../utils/random-data-lib";
+import docs from "./BarPlot.docs.md?raw";
+
 
 export default {
-    component: Barplot,
-    title: "Lattice/Barplot",
+    component: BarPlot,
+    title: "Lattice/Bar Plot",
+    parameters: {
+        docs: {
+            description: {
+                component: docs
+            },
+            canvas: {
+                sourceState: "none"
+            }
+        },
+    }
 };
 
 export const Default = {
     args: {
         id: "ljs-bar-plot",
-        data: RandomDataLib.createRandomCategoricalData(5,
+        data: RandomDataLib.createRandomCategoricalData(
+            5,
             "horizontal",
             5,
             "#96d0cb"

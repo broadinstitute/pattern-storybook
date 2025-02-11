@@ -27,6 +27,16 @@ export default {
             type: Array,
             required: true,
             default: () => []
+        },
+        padding: {
+            type: Object,
+            required: false,
+            default: () => ({
+                top: 20,
+                right: 50,
+                left: 50,
+                bottom: 50
+            })
         }
     },
     computed: {
@@ -35,14 +45,14 @@ export default {
                 width: this.width,
                 height: this.width,
                 padding: {
-                    top: 20,
-                    left: 100,
-                    bottom: 50,
-                    right: 50
+                    top: this.padding.top,
+                    left: this.padding.left,
+                    bottom: this.padding.bottom,
+                    right: this.padding.right
                 },
                 axis: {
                     x: {
-                        title: 'Number of Cell Line Models',
+                        title: 'value',
                         scaleType: "linear",
                         orientation: "bottom",
                         padding: 0.15,
@@ -76,6 +86,9 @@ export default {
     },
     mounted() {
         LatticeLib.plot(this.data, "barplot", this.id, this.plotConfig);
-    }
+    },
+    updated() {
+        LatticeLib.plot(this.data, "barplot", this.id, this.plotConfig);
+    },
 }
 </script>

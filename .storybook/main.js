@@ -5,7 +5,6 @@ const config = {
     "../stories/**/*.stories.@(js|jsx|mjs|ts|tsx)",
   ],
   addons: [
-    "@storybook/addon-onboarding",
     "@storybook/addon-essentials",
     "@chromatic-com/storybook",
     "@storybook/addon-interactions",
@@ -13,6 +12,9 @@ const config = {
   framework: {
     name: "@storybook/vue3-vite",
     options: {},
+  },
+  docs: {
+    autodocs: true,
   },
 };
 export default config;
