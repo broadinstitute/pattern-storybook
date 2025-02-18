@@ -37,6 +37,38 @@ export default {
                 left: 50,
                 bottom: 50
             })
+        },
+        axis: {
+            type: Object,
+            required: false,
+            default: () => ({
+                x: {
+                    title: 'value',
+                    scaleType: "linear",
+                    orientation: "bottom",
+                    padding: 0.15,
+                    textAngle: 0,
+                    textAnchor: null,
+                    display: true,
+                    hideAxis: false,
+                    hideTicks: false,
+                    hideLabels: false,
+                    hideTitle: false,
+                    min: 0,
+                },
+                y: {
+                    orientation: "left",
+                    scaleType: "categorical",
+                    padding: 0.15,
+                    textAngle: 0,
+                    textAnchor: null,
+                    display: true,
+                    hideAxis: false,
+                    hideTicks: false,
+                    hideLabels: false,
+                    hideTitle: true,
+                }
+            })
         }
     },
     computed: {
@@ -51,31 +83,8 @@ export default {
                     right: this.padding.right
                 },
                 axis: {
-                    x: {
-                        title: 'value',
-                        scaleType: "linear",
-                        orientation: "bottom",
-                        padding: 0.15,
-                        textAngle: 0,
-                        textAnchor: null,
-                        display: true,
-                        hideAxis: false,
-                        hideTicks: false,
-                        hideLabels: false,
-                        hideTitle: false,
-                        min: 0,
-                    },
-                    y: {
-                        orientation: "left",
-                        padding: 0.15,
-                        textAngle: 0,
-                        textAnchor: null,
-                        display: true,
-                        hideAxis: false,
-                        hideTicks: false,
-                        hideLabels: false,
-                        hideTitle: true,
-                    },
+                    x: this.axis.x,
+                    y: this.axis.y,
                 },
                 tooltip: {
                     enabled: true,

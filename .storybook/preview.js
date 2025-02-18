@@ -1,4 +1,8 @@
 /** @type { import('@storybook/vue3').Preview } */
+
+import darkTheme from './dark-theme';
+import lightTheme from './light-theme';
+
 const preview = {
   parameters: {
     controls: {
@@ -7,6 +11,10 @@ const preview = {
         date: /Date$/i,
       },
     },
+    darkMode: {
+      dark: darkTheme,
+      light: lightTheme
+    }
   },
 
   tags: ["autodocs"]

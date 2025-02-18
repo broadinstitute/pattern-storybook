@@ -230,7 +230,8 @@ function createRandomStackedCategoricalData(nBars, nSeries, axis="vertical", lab
 
 function createSeriesColorInfo(nSeries, colors=d3.schemeCategory10, verbose=false) {
     const series = createSeries(nSeries);
-    const colorScale = d3.scaleOrdinal().domain(nSeries).range(colors);
+    console.log(series)
+    const colorScale = d3.scaleOrdinal().domain(series).range(colors);
     const seriesInfo = series.map((d, i) => {
         return {
             name: d,
@@ -241,6 +242,7 @@ function createSeriesColorInfo(nSeries, colors=d3.schemeCategory10, verbose=fals
     if (verbose) {
         console.log(seriesInfo);
     }
+    console.log(seriesInfo)
     return seriesInfo;
 }
 

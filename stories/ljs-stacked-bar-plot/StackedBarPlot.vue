@@ -6,12 +6,12 @@
 import * as LatticeLib from "lattice-viz";
 
 export default {
-    name: 'ljs-column-plot',
+    name: 'ljs-stacked-bar-plot',
     props: {
         id: {
             type: String,
             required: false,
-            default: 'ljs-column-plot'
+            default: 'ljs-stacked-bar-plot'
         },
         width: {
             type: Number,
@@ -43,7 +43,7 @@ export default {
             required: false,
             default: () => ({
                 x: { 
-                    scaleType: "categorical",
+                    scaleType: "linear",
                     textAngle: 0, 
                     textAnchor: "start",
                     display: true,
@@ -53,8 +53,7 @@ export default {
                     hideTitle: false,
                     },
                 y: { 
-                    title: "value",
-                    scaleType: "linear",
+                    scaleType: "categorical",
                     display: true,
                     hideAxis: false,
                     hideTicks: false,
@@ -62,6 +61,16 @@ export default {
                     hideTitle: false,
                     }
             })
+        },
+        seriesInfo: {
+            type: Array,
+            required: false,
+            default: () => []
+        },
+        orientation: {
+            type: Number,
+            required: false,
+            default: 1
         }
     },
     computed: {
@@ -75,22 +84,24 @@ export default {
                     bottom: this.padding.bottom,
                     right: this.padding.right
                 },
+                series: this.seriesInfo,
+                orientation: this.orientation,
                 axis: {
                     x: this.axis.x,
                     y: this.axis.y
                 },
                 tooltip: {
                     enabled: true,
-                    id: "column-plot-tooltip"
+                    id: "stacked-bar-plot-tooltip"
                 }
             }
         }
     },
     mounted() {
-        LatticeLib.plot(this.data, "columnplot", this.id, this.plotConfig);
+        LatticeLib.plot(this.data, "stackedbarplot", this.id, this.plotConfig);
     },
     updated() {
-        LatticeLib.plot(this.data, "columnplot", this.id, this.plotConfig);
+        LatticeLib.plot(this.data, "stackedbarplot", this.id, this.plotConfig);
     },
 }
 </script>
