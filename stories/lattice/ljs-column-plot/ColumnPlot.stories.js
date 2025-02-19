@@ -1,7 +1,7 @@
 // import { fn } from '@storybook/test';
 
 import ColumnPlot from "./ColumnPlot.vue";
-import * as RandomDataLib from "../utils/random-data-lib";
+import * as RandomDataLib from "../../utils/random-data-lib";
 import docs from "./ColumnPlot.docs.md?raw";
 
 
@@ -34,7 +34,7 @@ export const Default = {
                 hideAxis: false,
                 hideTicks: false,
                 hideLabels: false,
-                hideTitle: true,
+                hideTitle: false,
                 },
             y: { 
                 title: "value",
@@ -43,7 +43,7 @@ export const Default = {
                 hideAxis: false,
                 hideTicks: false,
                 hideLabels: false,
-                hideTitle: true,
+                hideTitle: false,
                 }
         }
     },

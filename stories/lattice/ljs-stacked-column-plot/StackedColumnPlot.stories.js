@@ -1,12 +1,12 @@
 // import { fn } from '@storybook/test';
 
-import StackedBarPlot from "./StackedBarPlot.vue";
-import * as RandomDataLib from "../utils/random-data-lib";
-import docs from "./StackedBarPlot.docs.md?raw";
+import StackedColumnPlot from "./StackedColumnPlot.vue";
+import * as RandomDataLib from "../../utils/random-data-lib";
+import docs from "./StackedColumnPlot.docs.md?raw";
 
 export default {
-    component: StackedBarPlot,
-    title: "Lattice/Stacked Bar Plot",
+    component: StackedColumnPlot,
+    title: "Lattice/Stacked Column Plot",
     parameters: {
         docs: {
             description: {
@@ -21,8 +21,8 @@ export default {
 
 export const Default = {
     args: {
-        id: "ljs-stacked-bar-plot",
-        data: RandomDataLib.createRandomStackedCategoricalData(10, 5, "horizontal"),
+        id: "ljs-stacked-column-plot",
+        data: RandomDataLib.createRandomStackedCategoricalData(10, 5, "vertical"),
         seriesInfo: RandomDataLib.createSeriesColorInfo(5),
         orientation: 1
     },

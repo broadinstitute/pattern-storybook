@@ -1,7 +1,7 @@
 // import { fn } from '@storybook/test';
 
 import BarPlot from "./BarPlot.vue";
-import * as RandomDataLib from "../utils/random-data-lib";
+import * as RandomDataLib from "../../utils/random-data-lib";
 import docs from "./BarPlot.docs.md?raw";
 
 

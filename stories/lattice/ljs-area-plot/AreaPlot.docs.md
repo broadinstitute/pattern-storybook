@@ -1,0 +1,1 @@
+set the color of the area plot using CSS

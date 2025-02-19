@@ -146,7 +146,8 @@ function createRandomHeatmapData(rows=5, cols=5, n=5) {
  */
 function createHeatmapColors(n, type, colorRange = d3.schemeCategory10) {
     if (type == "discrete") {
-        const colorScale = d3.scaleOrdinal().domain(n).range(colorRange);
+        const series = createSeries(n);
+        const colorScale = d3.scaleOrdinal().domain(series).range(colorRange);
         const colors = d3.range(0, n).map((d) => colorScale(d));
         return {
             domain: [...Array(colors.length).keys()],
@@ -230,7 +231,6 @@ function createRandomStackedCategoricalData(nBars, nSeries, axis="vertical", lab
 
 function createSeriesColorInfo(nSeries, colors=d3.schemeCategory10, verbose=false) {
     const series = createSeries(nSeries);
-    console.log(series)
     const colorScale = d3.scaleOrdinal().domain(series).range(colors);
     const seriesInfo = series.map((d, i) => {
         return {
