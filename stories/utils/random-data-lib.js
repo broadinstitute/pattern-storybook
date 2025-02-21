@@ -242,7 +242,6 @@ function createSeriesColorInfo(nSeries, colors=d3.schemeCategory10, verbose=fals
     if (verbose) {
         console.log(seriesInfo);
     }
-    console.log(seriesInfo)
     return seriesInfo;
 }
 

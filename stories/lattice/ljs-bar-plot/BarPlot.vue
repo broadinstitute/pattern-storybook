@@ -93,11 +93,29 @@ export default {
             }
         }
     },
+    methods: {
+        /**
+         * Renders the visualization
+         */
+        renderViz() {
+            LatticeLib.plot(this.data, "barplot", this.id, this.plotConfig);
+        },
+        /**
+         * Removes the SVG from the DOM
+         */
+        removeViz() {
+            const svg = document.getElementById(`${this.id}-svg`)
+            if (svg) svg.remove();
+        }
+    },
     mounted() {
-        LatticeLib.plot(this.data, "barplot", this.id, this.plotConfig);
+        this.renderViz();
+    },
+    beforeUpdate() {
+        this.removeViz();
     },
     updated() {
-        LatticeLib.plot(this.data, "barplot", this.id, this.plotConfig);
+        this.renderViz();
     },
 }
 </script>

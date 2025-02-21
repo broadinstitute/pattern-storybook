@@ -6,12 +6,12 @@
 import * as LatticeLib from "lattice-viz";
 
 export default {
-    name: 'ljs-categorical-heatmap',
+    name: 'ljs-scatter-plot',
     props: {
         id: {
             type: String,
             required: false,
-            default: 'ljs-categorical-heatmap'
+            default: 'ljs-scatter-plot'
         },
         width: {
             type: Number,
@@ -28,25 +28,10 @@ export default {
             required: true,
             default: () => []
         },
-        numCategories: {
-            type: Number,
+        distribution: {
+            type: String,
             required: true,
-            default: 15
-        },
-        numCols: {
-            type: Number,
-            required: true,
-            default: 15
-        },
-        numRows: {
-            type: Number,
-            required: true,
-            default: 15
-        },
-        colorsObj: {
-            type: Object,
-            required: false,
-            default: () => {}
+            default: "randomExponential"
         },
         padding: {
             type: Object,
@@ -64,27 +49,32 @@ export default {
     computed: {
         plotConfig() {
             return {
-                padding: { 
+                padding: {
                     top: this.padding.top
                 },
                 axis: {
-                    c: { 
-                        domain: this.colorsObj.domain, 
-                        range: this.colorsObj.range 
+                    axis: {
+                        y: { 
+                            title: this.distribution, 
+                            ticks: 10
+                        },
+                        x: { 
+                            title: this.distribution 
+                        }
                     }
                 },
                 tooltip: {
                     enabled: true,
-                    id: "categorial-heatmap-tooltip"
+                    id: "scatter-plot-tooltip"
                 }
             }
         }
     },
     mounted() {
-        LatticeLib.plot(this.data, "categoricalheatmap", this.id, this.plotConfig);
+        LatticeLib.plot(this.data, "scatterplot", this.id, this.plotConfig);
     },
     updated() {
-        LatticeLib.plot(this.data, "categoricalheatmap", this.id, this.plotConfig);
+        LatticeLib.plot(this.data, "scatterplot", this.id, this.plotConfig);
     },
 }
 </script>

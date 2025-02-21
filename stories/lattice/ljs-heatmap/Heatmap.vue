@@ -6,12 +6,12 @@
 import * as LatticeLib from "lattice-viz";
 
 export default {
-    name: 'ljs-categorical-heatmap',
+    name: 'ljs-heatmap',
     props: {
         id: {
             type: String,
             required: false,
-            default: 'ljs-categorical-heatmap'
+            default: 'ljs-heatmap'
         },
         width: {
             type: Number,
@@ -28,7 +28,7 @@ export default {
             required: true,
             default: () => []
         },
-        numCategories: {
+        maxValue: {
             type: Number,
             required: true,
             default: 15
@@ -36,12 +36,12 @@ export default {
         numCols: {
             type: Number,
             required: true,
-            default: 15
+            default: 20
         },
         numRows: {
             type: Number,
             required: true,
-            default: 15
+            default: 20
         },
         colorsObj: {
             type: Object,
@@ -70,21 +70,21 @@ export default {
                 axis: {
                     c: { 
                         domain: this.colorsObj.domain, 
-                        range: this.colorsObj.range 
+                        interpolator: this.colorsObj.interpolator
                     }
                 },
                 tooltip: {
                     enabled: true,
-                    id: "categorial-heatmap-tooltip"
+                    id: "heatmap-tooltip"
                 }
             }
         }
     },
     mounted() {
-        LatticeLib.plot(this.data, "categoricalheatmap", this.id, this.plotConfig);
+        LatticeLib.plot(this.data, "heatmap", this.id, this.plotConfig);
     },
     updated() {
-        LatticeLib.plot(this.data, "categoricalheatmap", this.id, this.plotConfig);
+        LatticeLib.plot(this.data, "heatmap", this.id, this.plotConfig);
     },
 }
 </script>

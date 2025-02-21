@@ -41,34 +41,14 @@ export default {
         axis: {
             type: Object,
             required: false,
-            default: () => ({
-                x: {
-                    orientation: "bottom",
-                    padding: 0.15,
-                    textAngle: 0,
-                    textAnchor: null,
-                    display: true,
-                    hideAxis: false,
-                    hideTicks: false,
-                    hideLabels: false,
-                    hideTitle: false,
-                    min: 0,
-                },
-                y: {
-                    orientation: "left",
-                    padding: 0.15,
-                    textAngle: 0,
-                    textAnchor: null,
-                    display: true,
-                    hideAxis: false,
-                    hideTicks: false,
-                    hideLabels: false,
-                    hideTitle: true,
-                }
-            })
+            default: () => {}
         }
     },
     computed: {
+        /**
+         * Turns Vue props into a singular plotConfig
+         * to insert as Lattice parameter
+         */
         plotConfig() {
             return {
                 width: this.width,
@@ -89,23 +69,34 @@ export default {
                 }
             }
         },
-        // areaplot data input order matters for the area calculation -- sorting the random data beforehand
+        /**
+         * Areaplot data input order matters
+         * for area calculation
+         * 
+         * Sorts x values from least to greatest
+         */
         sortData() {
-            return this.data.sort((a, b) => {
-                if (a.x < b.x) return -1;
-                else if (a.x > b.x) return 1;
-                else return 0;
-            });
+            return this.data.sort((a, b) => a.x - b.x);
+        }
+    },
+    methods: {
+        renderViz() {
+            const data = this.sortData;
+            LatticeLib.plot(data, "areaplot", this.id, this.plotConfig);
+        },
+        removeViz() {
+            const svg = document.getElementById(`${this.id}-svg`)
+            if (svg) svg.remove();
         }
     },
     mounted() {
-        const data = this.sortData;
-        console.log(data)
-        LatticeLib.plot(data, "areaplot", this.id, this.plotConfig);
+        this.renderViz();
+    },
+    beforeUpdate() {
+        this.removeViz();
     },
     updated() {
-        const data = this.sortData;
-        LatticeLib.plot(data, "areaplot", this.id, this.plotConfig);
+        this.renderViz();
     },
 }
 </script>

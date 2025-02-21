@@ -8,6 +8,10 @@ JavaScript
 
 1. Ensure the entire `LatticeLib` module is imported
 
+```js
+import * as LatticeLib from "lattice-viz";
+```
+
 2. Set `id` variable
 
 ```js
@@ -25,10 +29,8 @@ const id = 'ljs-bar-plot';
  */
 const data = [ 
     {x: 67, y: "jnovu", c:"#96d0cb"},
-    {x: 77, y: 'hbobt', c: '#96d0cb'}
-    {x: 68, y: 'ipldu', c: '#96d0cb'}
-    {x: 55, y: 'lbxeq', c: '#96d0cb'}
-    {x: 49, y: 'jujkq', c: '#96d0cb'}
+    {x: 77, y: 'hbobt', c: '#96d0cb'},
+    {x: 68, y: 'ipldu', c: '#96d0cb'}...
 ]
 ```
 
@@ -43,6 +45,12 @@ const plotConfig = {
     title: "value"
   }
 }
+```
+
+5. Add all parameters into `LatticeLib.plot()` and indicate you are rendering a `"barplot"`
+
+```js
+LatticeLib.plot(data, "barplot", id, plotConfig);
 ```
 
 6. Resulting visualization below:
